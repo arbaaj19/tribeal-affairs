@@ -1,0 +1,189 @@
+To Upload The Image In Database it takes only three steps:-
+
+Make a HTML form to upload the image
+Connect to the database and store image
+Displaying the Image
+
+Step 1.Make a HTML form
+
+We make a HTML form with post method and save it with a name	upload.html
+
+	<html>
+	<body>
+		
+	<form method="POST" action="getdata.php" 			enctype="multipart/form-	data">
+	 <input type="file" name="myimage">
+	 <input type="submit" name="submit_image" value="Upload">
+	</form>
+
+	</body>
+	</html>
+
+We submit the data from this HTML form to getdata.php where the image is going to store in the database.
+
+
+
+Step 2.Connect To Database and Store Image
+
+In this step we have to connect to the database to store the image in database. You can connect to any database from which you want to get the data. In this we use sample database named " demo ".
+
+	<?php
+	$host = 'localhost';
+	$user = 'root';
+	$pass = ' ';
+
+	mysql_connect($host, $user, $pass);
+
+	mysql_select_db('demo');
+	?>
+
+To store the image into database you have to use blob datatype of your image column in your table. MySQL uses BLOB to store binary data and images is also a binary data. You can use any kind of BLOB TINYBLOB, BLOB, MEDIUMBLOB, LONGBLOB as per the size of your image.
+
+	<?php
+
+	$imagename=$_FILES["myimage"]["name"]; 
+
+	//Get the content of the image and then add slashes to it 
+	$imagetmp=addslashes (file_get_contents($_FILES['myimage']		['tmp_name']));
+
+	//Insert the image name and image content in image_table
+	$insert_image="INSERT INTO image_table VALUES		('$imagetmp','$imagename')";
+
+	mysql_query($insert_image);
+
+	?>
+
+
+
+Step 3.Displaying the stored Images from database
+
+To display images you have to make two files one is to fetch the image from database and second one is to display the image.You may also like
+
+
+
+    This is fetch_image.php file
+
+	<?php
+
+	header("content-type:image/jpeg");
+
+	$host = 'localhost';
+	$user = 'root';
+	$pass = ' ';
+
+	mysql_connect($host, $user, $pass);
+
+	mysql_select_db('demo');
+
+	$name=$_GET['name'];
+
+	$select_image="select * from image_table where 	imagename='$name'";
+
+	$var=mysql_query($select_image);
+
+	if($row=mysql_fetch_array($var))
+	{
+	 $image_name=$row["imagename"];
+	 $image_content=$row["imagecontent"];
+	}
+	echo $image;
+
+	?>
+
+Now we want to display the image we make another file display_image.php.
+
+	<html>
+	<body>	
+		
+	<form method="GET" action=" " >
+	 <input type="file" name="your_imagename">
+	 <input type="submit" name="display_image" value="Display">
+	</form>
+
+	</body>
+	</html>
+
+
+	<?php
+
+	$getname = $_GET[' your_imagename '];
+
+	echo "< img src = fetch_image.php?name=".$getname." width=200 		height=200 >";
+
+	?>
+
+
+
+
+To Upload The Image In Server it takes only three steps:-
+
+Make a HTML form to upload the image
+Store image path to database and store the image to your server or directory
+Displaying the Image
+
+
+Step 1.Make a HTML form
+
+You can use same HTML form as we made above to upload the image
+
+
+
+Step 2.Storing image to the Server
+
+In this step we get the image and store the image in directory and store the path of the image with name in database.You may also like drag and drop image upload using jQuery ajax.
+
+
+    This is store_image.php file
+
+	<?php
+	$host = 'localhost';
+	$user = 'root';
+	$pass = ' ';
+
+	mysql_connect($host, $user, $pass);
+
+	mysql_select_db('demo');
+
+	$upload_image=$_FILES[" myimage "][ "name" ];
+
+	$folder="/xampp/htdocs/images/";
+
+	move_uploaded_file($_FILES[" myimage "][" tmp_name "], 	"$folder".	$_FILES[" myimage "][" name "]);
+
+	$insert_path="INSERT INTO image_table VALUES		('$folder','$upload_image')";
+
+	$var=mysql_query($inser_path);
+	?>
+
+
+Step 3.Displaying the Images
+
+To display images you have to get the file name and file path from the database.
+
+
+  This is fetch_image.php file
+
+	<?php
+	$host = 'localhost';
+	$user = 'root';
+	$pass = ' ';
+
+	mysql_connect($host, $user, $pass);
+
+	mysql_select_db('demo');
+
+	$select_path="select * from image_table";
+
+	$var=mysql_query($select_path);
+
+	while($row=mysql_fetch_array($var))
+	{
+	 $image_name=$row["imagename"];
+	 $image_path=$row["imagepath"];
+	 echo "img src=".$image_path."/".$image_name." width=100 	height=100";
+	}
+	?>
+
+
+
+

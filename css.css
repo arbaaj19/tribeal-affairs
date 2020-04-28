@@ -1,0 +1,103 @@
+*{
+	box-sizing:border-box;
+}
+body {
+	margin:0;
+}
+.navbar{
+	display:block;
+	background-color:white;
+}
+.fix{
+	overflow:hidden;
+	background-color:white;
+	z-index:2;
+	position:fixed;
+	width:100%;
+}
+.logo{
+	height:90px;
+	width:100%;
+	float:right;
+}
+.title{
+	background-color:white;
+	text-align:center;
+	font-size:70px;
+	color:red;
+}
+.login{
+	padding-right:30px;
+	padding-top:20px;
+	text-align:left;
+	font-size:15px;
+}
+.login a{
+	width:140px;
+	padding:2px;
+	float:left;
+	height:50px;
+}
+.login a:hover{
+	width:140px;
+	text-decoration:none;
+	display:block;
+	border:double;
+	padding:5px;
+}
+.search{
+	margin-top:20px;
+}
+.menu{
+	padding:5px;
+	padding-bottom:25px;
+	font-size:15px;
+	color:black;
+}
+.menu a{
+	border-radius:10px;
+	transition: all 0.3s ease;
+	text-decoration:none;
+	display:block;
+	background-color:#e4e4e4;
+	color:#333;
+	padding:10px;
+}
+.menu a:hover{
+	text-decoration:none;
+	display:block;
+	border:double;
+	padding:10px;
+}
+.loginpage{
+	padding:10px;
+	border:dotted;
+	margin:10px;
+}
+.data{
+	color:black;
+	padding:25px;
+	border:double;
+	margin:5px;
+}
+
+<style>
+.data{
+	color:black;
+	padding:25px;
+	border:double;
+	margin:5px;
+}
+.gallery img{
+	height:310px;
+	width:300px;
+	margin:25px;
+	border:dotted;
+	height:250px;
+}
+.button{
+	display:inline;
+	width:200px;
+	
+}
+</style>

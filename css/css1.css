@@ -1,0 +1,75 @@
+*{
+	box-sizing:border-box;
+}
+body {
+	margin:0;
+}
+.fix{
+	overflow:hidden;
+	background-color:white;
+	z-index:2;
+	position:fixed;
+	width:100%;
+}
+.logo{
+	height:120px;
+	width:100%;
+	float:right;
+}
+.title{
+	text-align:center;
+	font-size:70px;
+}
+.login{
+	padding-right:30px;
+	padding-top:20px;
+	text-align:left;
+	font-size:15px;
+}
+.login a{
+	padding:2px;
+	width:100px;
+	float:left;
+	height:50px;
+}
+.login a:hover{
+	text-decoration:none;
+	display:block;
+	border:double;
+	padding:10px;
+}
+.search{
+	margin-top:20px;
+}
+.menu{
+	padding:5px;
+	padding-bottom:25px;
+	font-size:15px;
+	color:red;
+}
+.menu a{
+	border-radius:10px;
+	transition: all 0.3s ease;
+	text-decoration:none;
+	display:block;
+	background-color:#e4e4e4;
+	color:#333;
+	padding:10px;
+}
+.menu a:hover{
+	text-decoration:none;
+	display:block;
+	border:double;
+	padding:10px;
+}
+.loginpage{
+	padding:10px;
+	border:dotted;
+	margin:10px;
+}
+.data{
+	color:red;
+	padding:25px;
+	border:double;
+	margin:5px;
+}

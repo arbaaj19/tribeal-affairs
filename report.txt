@@ -1,0 +1,8 @@
+cover page
+certificate
+ack
+declaration
+abstract
+A home page click next to go next page
+splitting dataset into 60 and 40 or giving 100% data to train
+result of training data splited into 60/40
